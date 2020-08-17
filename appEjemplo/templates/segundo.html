@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3 id="titulo">Entrega</h3>
+    <label for="fname">numero:</label>
+    <input type="text" id="fnumber" name="fnumber"><br><br>
+    <button id="changeBtn" type="button" class="btn btn-primary">Cambiar titulo</button>
+{% endblock %}
+
+{% block js %}
+<script>
+    $("#changeBtn").click(function () {
+        $.ajax({
+            url: "/2", 
+            data: {
+                'numero': $('#fnumber').val(),
+            },
+            success: function(result){
+                $("#titulo").text(result.allright);
+            }
+        });
+    });
+</script>
+{% endblock %}

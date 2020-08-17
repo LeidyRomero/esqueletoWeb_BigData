@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <h3 id="titulo">Entrega</h3>
+    <label for="fname">numero:</label>
+    <input type="text" id="fnumber" name="fnumber"><br><br>
+    <label for="fname2">nombre:</label>
+    <input type="text" id="fnumber2" name="fnumber2"><br><br>
+    <button id="changeBtn2" type="button" class="btn btn-primary">Peticion HTTP</button>
+{% endblock %}
+
+{% block js %}
+<script>
+    $("#changeBtn2").click(function () {
+        $.ajax({
+            url: "/peticion", 
+            data: {
+                'numero': $('#fnumber').val(),
+                'nombre': $('#fnumber2').val(),
+            },
+            success: function(result){
+            }
+        });
+    });
+</script>
+{% endblock %}
